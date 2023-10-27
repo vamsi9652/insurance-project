@@ -22,9 +22,11 @@
 
     - name: Stop existing containers
       shell: docker stop $(docker ps -a -q)
+      become: yes
 
     - name: Delete all containers
       shell: docker rm $(docker ps -a -q)
+      become: yes
 
     - name: Deploy Docker Container
       command: docker run -itd -p 8089:8081 lakshmikasi/insuranceproject:1.1
