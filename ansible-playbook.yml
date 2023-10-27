@@ -20,9 +20,15 @@
         state: started
       become: yes
 
-    - name: Stop existing containers
-      command: docker stop $(docker ps -a -q)
-      become: yes
+    - name: Stop all Docker containers
+     shell: docker stop $(docker ps -aq)
+     register: stop_container_result
+     ignore_errors: true
+
+    - name: Display Docker container stop result
+     debug:
+     var: stop_container_result.stdout_lines
+
 
     - name: Delete all containers
       command: docker rm $(docker ps -a -q)
