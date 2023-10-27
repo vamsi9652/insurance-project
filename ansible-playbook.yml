@@ -21,11 +21,11 @@
       become: yes
 
     - name: Stop existing containers
-      shell: docker stop $(docker ps -a -q)
+      command: docker stop $(docker ps -a -q)
       become: yes
 
     - name: Delete all containers
-      shell: docker rm $(docker ps -a -q)
+      command: docker rm $(docker ps -a -q)
       become: yes
 
     - name: Deploy Docker Container
