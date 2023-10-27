@@ -20,12 +20,12 @@
         state: started
       become: yes
 
-    # Uncomment and adjust the following tasks if needed
-    #- name: Stop existing containers
-    #  shell: docker stop $(docker ps -a -q)
+     Uncomment and adjust the following tasks if needed
+    - name: Stop existing containers
+      shell: docker stop $(docker ps -a -q)
 
-    #- name: Delete all containers
-    #  shell: docker rm $(docker ps -a -q)
+    - name: Delete all containers
+      shell: docker rm $(docker ps -a -q)
 
     - name: Deploy Docker Container
       command: docker run -itd -p 8089:8081 lakshmikasi/insuranceproject:1.1
