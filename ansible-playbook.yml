@@ -21,7 +21,7 @@
       become: yes
 
     - name: Stop existing containers
-      command: docker stop $(docker ps -q --filter status=running)
+      shell: docker stop $(docker ps -a -q)
 
     - name: Delete all containers
       shell: docker rm $(docker ps -a -q)
